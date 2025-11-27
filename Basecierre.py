@@ -344,7 +344,7 @@ def to_excel_buffer(dfs: dict, sheet_name_map: dict):
 ## 🚀 Interfaz de Streamlit
 
 # 1. Cargar archivo
-uploaded_file = st.file_uploader("Sube el archivo de Excel (copia_de_fe_siiweb.xlsx)", type=["xlsx"])
+uploaded_file = st.file_uploader("Sube el archivo de Excel", type=["xlsx"])
 
 if uploaded_file is not None:
     try:
@@ -355,9 +355,9 @@ if uploaded_file is not None:
         # 2. Definir mes de corte
         max_month = df['MES'].dropna().dt.month.max() if 'MES' in df.columns else 12
         if pd.isna(max_month): # En caso de que no haya fechas válidas en 'MES'
-            max_month = 12
+            max_month = 13
             
-        no_mes = st.number_input(
+        no_mes = st.text_input(
             "Inserta el número de mes al que deseas el flujo (1-12):",
             min_value=1,
             max_value=int(max_month),
@@ -425,4 +425,4 @@ if uploaded_file is not None:
  # git add .  
  # git commit -m "Descripción concisa de mis actualizaciones" 
  #git push
- #verificar con git status
+ #vericar con git status
